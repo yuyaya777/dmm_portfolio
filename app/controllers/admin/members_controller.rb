@@ -1,2 +1,2 @@
-class MembersController < ApplicationController
+class Admin::MembersController < ApplicationController
 end

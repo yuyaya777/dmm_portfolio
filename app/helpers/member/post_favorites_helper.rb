@@ -1,2 +1,2 @@
-module PostFavoritesHelper
+module Member::PostFavoritesHelper
 end

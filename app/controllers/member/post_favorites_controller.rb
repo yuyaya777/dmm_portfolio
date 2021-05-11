@@ -1,2 +1,2 @@
-class PostFavoritesController < ApplicationController
+class Member::PostFavoritesController < ApplicationController
 end

@@ -1,2 +1,2 @@
-module PostCommentsHelper
+module Admin::PostCommentsHelper
 end

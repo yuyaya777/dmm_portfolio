@@ -1,2 +1,2 @@
-class PostsController < ApplicationController
+class Member::PostsController < ApplicationController
 end
