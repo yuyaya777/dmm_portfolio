@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :members
-    resources :categories
+    resources :categories, only:[:index, :create, :edit, :update]
     resources :post_comments
     resources :posts
   end

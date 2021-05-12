@@ -6,8 +6,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
-    if @category.save
+    @category = Category.new
+    if @category.save(category_params)
       redirect_to admin_categories_path
     end
   end
@@ -26,7 +26,7 @@ class Admin::CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:category_name)
   end
 
 end
