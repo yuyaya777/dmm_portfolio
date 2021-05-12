@@ -6,13 +6,15 @@ class Member::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new
-    @post.save(post_params)
+    @post = Post.new(post_params)
+    @post.member_id = current_member.id
+    @post.save!
     redirect_to member_posts_path
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(10)
+    @post_all = Post.all
   end
 
   def edit
@@ -27,6 +29,6 @@ class Member::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_image, :category_id)
+    params.require(:post).permit(:title, :body, :post_image_id, :category_id, :member_id)
   end
 end
