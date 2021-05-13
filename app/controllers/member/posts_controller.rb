@@ -17,13 +17,25 @@ class Member::PostsController < ApplicationController
     @post_all = Post.all
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def edit
+    @post = Post.find(params[:id])
+    @categories = Category.all
   end
 
   def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to member_post_path(@post)
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to member_posts_path
   end
 
   private

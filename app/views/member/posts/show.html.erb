@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>質問詳細</h2>
+  <div class="row">
+    <div class="col-8">
+      <%= link_to member_member_path(@post.member) do %>
+        <%= @post.member.name %>
+      <% end %>
+    </div>
+    <div class="col-8">
+      <%= @post.title %>
+      <%= @post.body %>
+      <%= link_to "編集する", edit_member_post_path(@post), class: "btn btn-success" %>
+      <%= link_to "削除する", member_post_path(@post), method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>
