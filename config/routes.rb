@@ -15,8 +15,9 @@ Rails.application.routes.draw do
 
   namespace :member do
     resources :members
-    resources :posts
-    resources :post_comments
+    resources :posts, only: [:new, :create, :index, :show, :update, :destroy] do
+      resources :post_comments, only: [:create, :destroy]
+    end
     resources :post_favorites
     resources :post_comment_favorites
   end

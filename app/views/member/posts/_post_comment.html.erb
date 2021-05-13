@@ -1,0 +1,22 @@
+<table>
+  <% @post.post_comments.each do |post_comment| %>
+    <% post_comment_member = post_comment.member %>
+    <tr>
+      <td>
+        <%= link_to member_member_path(post_comment_member) do %>
+          <%= post_comment_member.name %>
+        <% end %>
+      </td>
+      <td><%= post_comment.comment %></td>
+      <% if current_member = post_comment_member %>
+        <td>
+          <%= link_to "コメント削除", member_post_post_comment_path(post_comment.post_id, post_comment.id), class: "btn btn-danger" %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+<%= form_with model:[@post,@post_comment], local:true do |f| %>
+ <%= f.text_area :comment, size:"90x5" %><br>
+ <%= f.submit "コメントする" %>
+<% end %>
