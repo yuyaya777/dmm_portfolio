@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   belongs_to :member
   has_many :post_comments
   has_many :post_favorites
+  def favorited_by?(member)
+    post_favorites.where(member_id: member.id).exists?
+  end
 
   attachment :post_image
 end

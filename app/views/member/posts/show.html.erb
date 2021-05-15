@@ -9,6 +9,19 @@
     <div class="col-8">
       <%= @post.title %>
       <%= @post.body %>
+      <% if @post.favorited_by?(current_member) %>
+        <p>
+          <%= link_to member_post_post_favorites_path(@post), method: :delete do %>
+            <i class="bi bi-hand-thumbs-up-fill"></i><%= @post.post_favorites.count %>いいね
+          <% end %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to member_post_post_favorites_path(@post), method: :post do %>
+            <i class="bi bi-hand-thumbs-up"></i><%= @post.post_favorites.count %>いいね
+          <% end %>
+        </p>
+      <% end %>
       <%= link_to "編集する", edit_member_post_path(@post), class: "btn btn-success" %>
       <%= link_to "削除する", member_post_path(@post), method: :delete, class: "btn btn-danger" %>
     </div>
