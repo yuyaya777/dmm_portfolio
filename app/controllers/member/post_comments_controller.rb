@@ -1,7 +1,7 @@
 class Member::PostCommentsController < ApplicationController
 
   def create
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
     @post_comment = PostComment.new(book_comment_params)
     @post_comment.post_id = @post.id
     @post_comment.member_id = current_member.id
@@ -13,7 +13,7 @@ class Member::PostCommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
     post_comment = @post.post_comments.find(params[:id])
     post_comment.destroy
     redirect_to request.referer

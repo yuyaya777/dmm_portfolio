@@ -1,5 +1,5 @@
 <table>
-  <% @post.post_comments.each do |post_comment| %>
+  <% post.post_comments.each do |post_comment| %>
     <% post_comment_member = post_comment.member %>
     <tr>
       <td>
@@ -8,7 +8,7 @@
         <% end %>
       </td>
       <td><%= post_comment.comment %></td>
-      <% if current_member = post_comment_member %>
+      <% if current_member == post_comment_member %>
         <td>
           <%= link_to "コメント削除", member_post_post_comment_path(post_comment.post_id, post_comment.id), class: "btn btn-danger" %>
         </td>
@@ -16,7 +16,7 @@
     </tr>
   <% end %>
 </table>
-<%= form_with model:[@post,@post_comment], local:true do |f| %>
+<%= form_with model:[post,post_comment], local:true do |f| %>
  <%= f.text_area :comment, size:"90x5" %><br>
  <%= f.submit "コメントする" %>
 <% end %>
