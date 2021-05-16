@@ -20,6 +20,7 @@ class Member::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    # @comment = PostComment.find(params[:post_comment_id])
   end
 
   def edit

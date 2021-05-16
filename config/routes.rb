@@ -16,10 +16,11 @@ Rails.application.routes.draw do
   namespace :member do
     resources :members
     resources :posts, only: [:new, :create, :index, :show, :update, :destroy, :edit] do
-      resources :post_comments, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy] do
+        resource :post_comment_favorites, only: [:create, :destroy]
+      end
       resource :post_favorites, only: [:create, :destroy]
     end
-    resources :post_comment_favorites
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

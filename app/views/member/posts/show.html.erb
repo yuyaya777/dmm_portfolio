@@ -35,6 +35,22 @@
           <% end %>
         </td>
         <td><%= post_comment.comment %></td>
+        <td>
+          <% if post_comment.favorited_by?(current_member) %>
+            <!-- postの中にpost_commentとpost_comment_favoriteをネストしている為、path先が長くなりdeleteとpostアクションするのにidが2つ必要(@postとpost_comment)-->
+            <p>
+              <%= link_to member_post_post_comment_post_comment_favorites_path(@post,post_comment), method: :delete do %>
+                <i class="bi bi-hand-thumbs-up-fill"></i><%= post_comment.post_comment_favorites.count %>いいね
+              <% end %>
+            </p>
+          <% else %>
+            <p>
+              <%= link_to member_post_post_comment_post_comment_favorites_path(@post,post_comment), method: :post do %>
+                <i class="bi bi-hand-thumbs-up"></i><%= post_comment.post_comment_favorites.count %>いいね
+              <% end %>
+            </p>
+          <% end %>
+        </td>
         <% if current_member == post_comment_member %>
           <td>
             <%= link_to "コメント削除", member_post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, class: "btn btn-danger" %>
