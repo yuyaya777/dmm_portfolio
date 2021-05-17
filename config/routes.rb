@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/search'
   root to: 'homes#top'
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
       resource :post_favorites, only: [:create, :destroy]
     end
   end
+
+  get '/search', to: 'search#search'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

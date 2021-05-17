@@ -1,0 +1,9 @@
+<div class="row">
+  <% posts.each do |post| %>
+    <%= link_to member_post_path(post.id) do %>
+      <div class="col-3">
+        <%= post.title %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,12 +1,4 @@
 <div class="container">
   <h2>質問一覧<span>（全<%= @post_all.count %>件）</span></h2>
-  <div class="row">
-    <% @posts.each do |post| %>
-      <%= link_to member_post_path(post.id) do %>
-        <div class="col-3">
-          <%= post.title %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <%= render 'member/posts/index', posts: @posts %>
 </div>
