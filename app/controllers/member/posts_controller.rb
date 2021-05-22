@@ -19,8 +19,9 @@ class Member::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # ランキングをsort_byで並び替え
+    @all_ranks = @post.post_comments.sort_by{|x| x.post_comment_favorites.count}.reverse
     @post_comment = PostComment.new
-    # @comment = PostComment.find(params[:post_comment_id])
   end
 
   def edit

@@ -26,7 +26,7 @@
       <%= link_to "削除する", member_post_path(@post), method: :delete, class: "btn btn-danger" %>
     </div>
     <table>
-    <% @post.post_comments.each do |post_comment| %>
+    <% @all_ranks.each do |post_comment| %>
       <% post_comment_member = post_comment.member %>
       <tr>
         <td>
