@@ -1,0 +1,13 @@
+<h2><%= @member.name %>さんのプロフィール</h2>
+<table class='table'>
+  <tr><%= attachment_image_tag(@member, :profile_image, :fill, 100, 100, fallback: "no-image-icon.jpg") %></tr>
+  <tr>
+	  <th>name</th>
+	  <th><%= @member.name %></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <th><%= @member.introduction %></th>
+  </tr>
+</table>
+<h2><%= @member.name %>さんがされた質問</h2>

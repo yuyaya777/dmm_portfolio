@@ -1,4 +1,5 @@
 class Member::PostsController < ApplicationController
+  before_action :authenticate_member!,except: [:index, :show]
 
   def new
     @post = Post.new
