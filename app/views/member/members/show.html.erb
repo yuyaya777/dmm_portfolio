@@ -1,6 +1,6 @@
 <h2><%= @member.name %>さんのプロフィール</h2>
 <table class='table'>
-  <tr><%= attachment_image_tag(@member, :profile_image, :fill, 100, 100, fallback: "no-image-icon.jpg") %></tr>
+  <tr><%= attachment_image_tag(@member, :profile_image_id, :fill, 100, 100, fallback: "no-image-icon.jpeg") %></tr>
   <tr>
 	  <th>name</th>
 	  <th><%= @member.name %></th>
@@ -10,4 +10,5 @@
 	  <th><%= @member.introduction %></th>
   </tr>
 </table>
+<%= link_to 'プロフィール情報変更',edit_member_member_path(@member), class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_member_member_#{@member.id}" %>
 <h2><%= @member.name %>さんがされた質問</h2>
