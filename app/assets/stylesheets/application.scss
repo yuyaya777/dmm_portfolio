@@ -16,3 +16,18 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+footer {
+  height: 100px;
+  line-height: 100px;
+}
