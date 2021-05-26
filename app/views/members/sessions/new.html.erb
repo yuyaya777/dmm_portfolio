@@ -24,5 +24,8 @@
     </div>
   <% end %>
 
-  <%= render "members/shared/links" %>
+    <div class="mt-5">
+      <h3>会員登録がお済でない方</h3>
+      <p><%= link_to 'こちら', new_member_registration_path %> から新規登録を行ってください</p>
+    </div>
 </div>
