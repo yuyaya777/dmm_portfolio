@@ -22,6 +22,8 @@ class Member::PostsController < ApplicationController
     @post = Post.find(params[:id])
     # ランキングをsort_byで並び替え
     @all_ranks = @post.post_comments.sort_by{|x| x.post_comment_favorites.count}.reverse
+    # @all_ranks.firstでベストアンサー取得
+    @best_answer = @all_ranks.first
     @post_comment = PostComment.new
   end
 
