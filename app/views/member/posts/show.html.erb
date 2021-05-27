@@ -45,72 +45,78 @@
       </div>
     </div>
   </div>
-  <div class="border border-success" style="padding:10px; margin:10px">
-    <h2>ベストアンサー  <%= image_tag "best_answer.jpeg", size: "50x50" %></h2>
-    <div class="row">
-      <div class="col-2">
-        <%= link_to member_member_path(@best_answer.member) do %>
-          <%= attachment_image_tag(@best_answer.member, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpeg") %><br>
-        <% end %>
+  <% if @best_answer.present? %>
+    <div class="border border-success" style="padding:10px; margin:10px">
+      <h2>ベストアンサー  <%= image_tag "best_answer.jpeg", size: "50x50" %></h2>
+      <div class="row">
+        <div class="col-2">
+          <%= link_to member_member_path(@best_answer.member) do %>
+            <%= attachment_image_tag(@best_answer.member, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpeg") %><br>
+          <% end %>
+        </div>
+        <div class="col-10">
+          <a>回答者: </a>
+          <%= link_to member_member_path(@best_answer.member) do %>
+            <%= @best_answer.member.name %>さん
+          <% end %><br>
+          <a>回答日時: </a>
+          <%= @best_answer.created_at.strftime('%Y/%m/%d/%H:%M') %>
+        </div>
       </div>
-      <div class="col-10">
-        <a>回答者: </a>
-        <%= link_to member_member_path(@best_answer.member) do %>
-          <%= @best_answer.member.name %>さん
-        <% end %><br>
-        <a>回答日時: </a>
-        <%= @best_answer.created_at.strftime('%Y/%m/%d/%H:%M') %>
+      <div class="row">
+        <div class="col-10">
+          <h4>コメント</h4>
+          <p>
+            <%= @best_answer.comment %>
+          </p>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-10">
-        <h4>コメント</h4>
-        <p>
-          <%= @best_answer.comment %>
-        </p>
-      </div>
-    </div>
-  </div>
+  <% end %>
   <h2>質問に対する回答一覧</h2>
-  <div class="row">
-    <table class="table table-hover table-inverse" style="padding:10px; margin:20px;">
-    <% @all_ranks.each do |post_comment| %>
-      <% post_comment_member = post_comment.member %>
-      <tr>
-        <td style="width: 20%">
-          回答者: <%= link_to member_member_path(post_comment_member) do %>
-            <%= post_comment_member.name %>
-          <% end %>
-        </td>
-        <td style="width: 50%"><%= post_comment.comment %></td>
-        <td style="width: 10%"><%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
-        <td style="width: 10%">
-          <% if post_comment.favorited_by?(current_member) %>
-            <!-- postの中にpost_commentとpost_comment_favoriteをネストしている為、path先が長くなりdeleteとpostアクションするのにidが2つ必要(@postとpost_comment)-->
-            <p>
-              <%= link_to member_post_post_comment_post_comment_favorites_path(@post,post_comment), method: :delete do %>
-                <i class="fas fa-thumbs-up"></i><%= post_comment.post_comment_favorites.count %>いいね
-              <% end %>
-            </p>
-          <% else %>
-            <p>
-              <%= link_to member_post_post_comment_post_comment_favorites_path(@post,post_comment), method: :post do %>
-                <i class="far fa-thumbs-up"></i><%= post_comment.post_comment_favorites.count %>いいね
-              <% end %>
-            </p>
-          <% end %>
-        </td>
-        <% if current_member == post_comment_member %>
-          <td style="width: 10%">
-            <%= link_to "コメント削除", member_post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, class: "btn btn-danger" %>
+  <% if @all_ranks.present? %>
+    <div class="row">
+      <table class="table table-hover table-inverse" style="padding:10px; margin:20px;">
+      <% @all_ranks.each do |post_comment| %>
+        <% post_comment_member = post_comment.member %>
+        <tr>
+          <td style="width: 20%">
+            回答者: <%= link_to member_member_path(post_comment_member) do %>
+              <%= post_comment_member.name %>
+            <% end %>
           </td>
-        <% end %>
-      </tr>
-    <% end %>
-    </table>
-    <%= form_with model:[@post,@post_comment], url: member_post_post_comments_path(@post), local:true do |f| %>
-      <%= f.text_area :comment, size:"90x5" %><br>
-      <%= f.submit "コメントする" %>
-    <% end %>
-  </div>
+          <td style="width: 50%"><%= post_comment.comment %></td>
+          <td style="width: 10%"><%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
+          <td style="width: 10%">
+            <% if post_comment.favorited_by?(current_member) %>
+              <!-- postの中にpost_commentとpost_comment_favoriteをネストしている為、path先が長くなりdeleteとpostアクションするのにidが2つ必要(@postとpost_comment)-->
+              <p>
+                <%= link_to member_post_post_comment_post_comment_favorites_path(@post,post_comment), method: :delete do %>
+                  <i class="fas fa-thumbs-up"></i><%= post_comment.post_comment_favorites.count %>いいね
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to member_post_post_comment_post_comment_favorites_path(@post,post_comment), method: :post do %>
+                  <i class="far fa-thumbs-up"></i><%= post_comment.post_comment_favorites.count %>いいね
+                <% end %>
+              </p>
+            <% end %>
+          </td>
+          <% if current_member == post_comment_member %>
+            <td style="width: 10%">
+              <%= link_to "コメント削除", member_post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, class: "btn btn-danger" %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  <% else %>
+    <h4>現在、回答はありません</h4>
+  <% end %>
+  <%= form_with model:[@post,@post_comment], url: member_post_post_comments_path(@post), local:true do |f| %>
+    <%= f.text_area :comment, size:"90x5" %><br>
+    <%= f.submit "コメントする" %>
+  <% end %>
 </div>

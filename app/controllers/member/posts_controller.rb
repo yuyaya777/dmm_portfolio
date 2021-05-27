@@ -9,8 +9,11 @@ class Member::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.member_id = current_member.id
-    @post.save!
-    redirect_to member_posts_path
+    if @post.save
+      redirect_to member_posts_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -34,8 +37,11 @@ class Member::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to member_post_path(@post)
+    if @post.update(post_params)
+      redirect_to member_post_path(@post)
+    else
+      render :edit
+    end
   end
 
   def destroy

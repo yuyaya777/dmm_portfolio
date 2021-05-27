@@ -10,4 +10,6 @@ class Member < ApplicationRecord
   has_many :post_comment_favorites
 
   attachment :profile_image
+
+  validates :name, presence: true
 end

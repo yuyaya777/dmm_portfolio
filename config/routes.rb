@@ -8,10 +8,7 @@ Rails.application.routes.draw do
   devise_for :members
 
   namespace :admin do
-    resources :members
     resources :categories, only:[:index, :create, :edit, :update]
-    resources :post_comments
-    resources :posts
   end
 
   namespace :member do
