@@ -1,5 +1,5 @@
 class Member::PostsController < ApplicationController
-  before_action :authenticate_member!,except: [:index, :show]
+  before_action :authenticate_member!, except: [:index]
 
   def new
     @post = Post.new
