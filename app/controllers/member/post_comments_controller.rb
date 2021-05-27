@@ -9,7 +9,7 @@ class Member::PostCommentsController < ApplicationController
     if @post_comment.save
       redirect_to member_post_path(@post.id)
     else
-      render 'posts/show'
+      render 'member/posts/show'
     end
   end
 
