@@ -21,7 +21,7 @@ class Member::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name, :introduction, :profile_image_id)
+    params.require(:member).permit(:name, :introduction, :profile_image)
   end
 
   def ensure_correct_member
