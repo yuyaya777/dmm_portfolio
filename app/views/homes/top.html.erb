@@ -1,18 +1,43 @@
 <div class="container">
   <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 my-5'>
+      <h1 class="mt-5 text-center">ようこそ、 <i class="fas fa-table-tennis"></i><strong>卓球知恵袋</strong>  へ!!</h1>
+      <h2 class="mt-5 text-center">　"卓球知恵袋"　とは？</h2>
+      <h4 class="mt-5 text-center">卓球の練習方法や技術に対する質問を投稿し</h4>
+      <h4 class="mt-5 text-center">回答出来る知恵袋サイトです。</h4>
+    </div>
+  </div>
+  <div class="row border-top my-5">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-      <h1>ようこそ <i class="fas fa-table-tennis"></i><strong>卓球知恵袋</strong>  へ!!</h1>
-      <p>In  <i class="fas fa-book"></i><strong>Bookers</strong>, </p>
-      <p>you can share and exchange  your opinions , inpressions , and emotions</p>
-      <p> about various books!</p>
-      <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to 'ログイン',new_member_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
-        </div>
-        <div class="row">
-          <%= link_to '新規登録',new_member_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
-        </div>
-      </div>
+      <h3 class="mt-5 text-center"><strong>こんな人に利用して欲しい！！</strong></h3>
+    </div>
+  </div>
+  <div class="row mx-auto border-bottom my-5">
+    <div class="col-3 mx-auto">
+      <div><%= image_tag 'smile.png', size: '250x200' %></div>
+      <p>卓球を始められた方！</p>
+    </div>
+    <div class="col-3 mx-auto">
+      <div><%= image_tag 'confuse.png', size: '250x200' %></div>
+      <p>指導者がいない状態で独学で卓球を練習している方！</p>
+    </div>
+    <div class="col-3 mx-auto">
+      <div><%= image_tag 'coach.png', size: '250x200' %></div>
+      <p>学校で卓球を教えている顧問の先生方！</p>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <h3 class="mt-5 text-center"><strong>最近の投稿された質問</strong></h3>
+    </div>
+  </div>
+  <%= render 'member/posts/index', posts: @posts %>
+  <div class="row my-5">
+    <div class="btn-wrapper col-5 mx-auto">
+      <%= link_to 'ログイン',new_member_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+    </div>
+    <div class="btn-wrapper col-5 mx-auto">
+      <%= link_to '新規登録',new_member_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
     </div>
   </div>
 </div>
