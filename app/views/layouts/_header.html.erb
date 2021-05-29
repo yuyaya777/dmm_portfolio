@@ -1,0 +1,27 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand", style="padding:10px;", href="/"><%= image_tag "logo.jpg", size: "40x40" %></a>
+      <a class="navbar-brand", href="/">卓球知恵袋</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if member_signed_in? %>
+          <li><%= link_to '質問一覧', member_posts_path, class: "btn btn-outline-secondary" %></li>
+          <li><%= link_to '新規投稿', new_member_post_path, class: "btn btn-outline-secondary" %></li>
+          <li><%= link_to 'マイページ', member_member_path(current_member), class: "btn btn-outline-secondary" %></li>
+          <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: "btn btn-outline-secondary" %></li>
+        <% elsif admin_signed_in? %>
+          <li><%= link_to 'ログアウト',destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %></li>
+        <% else %>
+          <li><%= link_to '質問一覧', member_posts_path, class: "btn btn-outline-secondary" %></li>
+          <li><%= link_to '新規登録', new_member_registration_path, class: "btn btn-outline-secondary" %></li>
+          <li><%= link_to 'ログイン', new_member_session_path, class: "btn btn-outline-secondary" %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
