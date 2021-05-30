@@ -7,10 +7,12 @@ Rails.application.routes.draw do
 
   devise_for :members
 
+  # 管理者側
   namespace :admin do
     resources :categories, only:[:index, :create, :edit, :update]
   end
-
+  
+  # ユーザー側
   namespace :member do
     resources :members
     resources :posts, only: [:new, :create, :index, :show, :update, :destroy, :edit] do
