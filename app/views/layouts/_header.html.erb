@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand", style="padding:10px;", href="/"><%= image_tag "logo.jpg", size: "40x40" %></a>
       <a class="navbar-brand", href="/">卓球知恵袋</a>
@@ -9,16 +9,16 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if member_signed_in? %>
-          <li><%= link_to '質問一覧', member_posts_path, class: "btn btn-outline-secondary" %></li>
-          <li><%= link_to '新規投稿', new_member_post_path, class: "btn btn-outline-secondary" %></li>
-          <li><%= link_to 'マイページ', member_member_path(current_member), class: "btn btn-outline-secondary" %></li>
-          <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: "btn btn-outline-secondary" %></li>
+          <li><%= link_to ' 質問一覧', member_posts_path, class: "fas fa-book-open nav-link text-light" %></li>
+          <li><%= link_to ' 新規投稿', new_member_post_path, class: "fas fa-folder-plus nav-link text-light" %></li>
+          <li><%= link_to ' マイページ', member_member_path(current_member), class: "fas fa-address-card nav-link text-light" %></li>
+          <li><%= link_to ' ログアウト', destroy_member_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %></li>
         <% elsif admin_signed_in? %>
-          <li><%= link_to 'ログアウト',destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %></li>
+          <li><%= link_to ' ログアウト',destroy_admin_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %></li>
         <% else %>
-          <li><%= link_to '質問一覧', member_posts_path, class: "btn btn-outline-secondary" %></li>
-          <li><%= link_to '新規登録', new_member_registration_path, class: "btn btn-outline-secondary" %></li>
-          <li><%= link_to 'ログイン', new_member_session_path, class: "btn btn-outline-secondary" %></li>
+          <li><%= link_to ' 質問一覧', member_posts_path, class: "fas fa-book-open nav-link text-light" %></li>
+          <li><%= link_to ' 新規登録', new_member_registration_path, class: "fas fa-user-plus nav-link text-light" %></li>
+          <li><%= link_to ' ログイン', new_member_session_path, class: "fas fa-sign-in-alt nav-link text-light" %></li>
         <% end %>
         </ul>
       </div>
