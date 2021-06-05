@@ -1,6 +1,7 @@
 <div class="container">
   <h2>質問詳細</h2>
   <%= render 'layouts/errors', obj: @post_comment %>
+  
   <div class="border border-success" style="padding:10px; margin:10px;">
     <div class="row">
       <div class="col-2">
@@ -46,6 +47,7 @@
       </div>
     </div>
   </div>
+  
   <% if @best_answer.present? %>
     <div class="border border-success" style="padding:10px; margin:10px">
       <h2>ベストアンサー  <%= image_tag "best_answer.jpeg", size: "50x50" %></h2>
@@ -74,6 +76,7 @@
       </div>
     </div>
   <% end %>
+  
   <h2>質問に対する回答一覧</h2>
   <% if @all_ranks.present? %>
     <div class="row">
