@@ -1,7 +1,7 @@
 <div class="container">
   <h2>質問詳細</h2>
   <%= render 'layouts/errors', obj: @post_comment %>
-  
+
   <div class="border border-success" style="padding:10px; margin:10px;">
     <div class="row">
       <div class="col-2">
@@ -27,19 +27,7 @@
         <p>
           <%= @post.post_favorites.count %>人がこの質問に共感しています
         </p>
-        <% if @post.favorited_by?(current_member) %>
-          <p>
-            <%= link_to member_post_post_favorites_path(@post), method: :delete do %>
-              <i class="fas fa-smile"></i>共感した
-            <% end %>
-          </p>
-        <% else %>
-          <p>
-            <%= link_to member_post_post_favorites_path(@post), method: :post do %>
-              <i class="far fa-smile"></i>共感した
-            <% end %>
-          </p>
-        <% end %>
+        <%= render 'member/posts/post_favorite', post: @post %>
         <% if @post.member == current_member %>
           <%= link_to "編集する", edit_member_post_path(@post), class: "btn btn-success" %>
           <%= link_to "削除する", member_post_path(@post), method: :delete, class: "btn btn-danger" %>
@@ -47,7 +35,7 @@
       </div>
     </div>
   </div>
-  
+
   <% if @best_answer.present? %>
     <div class="border border-success" style="padding:10px; margin:10px">
       <h2>ベストアンサー  <%= image_tag "best_answer.jpeg", size: "50x50" %></h2>
@@ -76,7 +64,7 @@
       </div>
     </div>
   <% end %>
-  
+
   <h2>質問に対する回答一覧</h2>
   <% if @all_ranks.present? %>
     <div class="row">
@@ -106,6 +94,7 @@
                 <% end %>
               </p>
             <% end %>
+            <!-- 部分テンプレートでエラー発生。後日修正する -->
           </td>
           <% if current_member == post_comment_member %>
             <td style="width: 10%">
