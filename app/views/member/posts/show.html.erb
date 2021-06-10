@@ -67,7 +67,8 @@
 
   <h2>質問に対する回答一覧</h2>
   <%= render 'member/posts/post_comment', all_ranks: @all_ranks, post: @post %>
-  <%= form_with model:[@post,@post_comment], url: member_post_post_comments_path(@post), local:true do |f| %>
+  
+  <%= form_with model:[@post,@post_comment], url: member_post_post_comments_path(@post), do |f| %>
     <%= f.text_area :comment, size:"90x5" %><br>
     <%= f.submit "コメントする" %>
   <% end %>

@@ -1,12 +1,12 @@
 <% if post.favorited_by?(current_member) %>
   <p>
-    <%= link_to member_post_post_favorites_path(post), method: :delete do %>
+    <%= link_to member_post_post_favorites_path(post), method: :delete, remote: true do %>
       <i class="fas fa-smile"></i>共感した
     <% end %>
   </p>
 <% else %>
   <p>
-    <%= link_to member_post_post_favorites_path(post), method: :post do %>
+    <%= link_to member_post_post_favorites_path(post), method: :post, remote: true do %>
       <i class="far fa-smile"></i>共感した
     <% end %>
   </p>
