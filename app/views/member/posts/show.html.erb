@@ -25,7 +25,7 @@
         <h4>質問内容</h4>
         <p style="padding:10px; margin:10px;"><%= @post.body %></p>
         <p>
-          <%= @post.post_favorites.count %>人がこの質問に共感しています
+          <%= @post.post_favorites.count %>人がこの質問に共感しています！
         </p>
         <%= render 'member/posts/post_favorite', post: @post %>
         <% if @post.member == current_member %>
