@@ -14,7 +14,7 @@
       <%= link_to 'プロフィール情報変更',edit_member_member_path(@member), class: "btn btn-outline-primary btn-block" %>
     </div>
     
-  <h2><%= @member.name %>さんがされた質問</h2>
+  <h2><%= @member.name %>さんが投稿された質問</h2>
   <div class="row">
     <table class="table table-hover table-inverse" style="padding:10px; margin:20px;">
     <% @member.posts.each do |post| %>
