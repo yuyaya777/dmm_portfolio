@@ -1,5 +1,5 @@
 <% if obj.errors.any? %>
-  <%= obj.errors.count %>件のエラーが発生しました
+  <%= obj.errors.count %>件のエラーが発生しました！　エラー箇所を修正して下さい
   <% obj.errors.full_messages.each do |message| %>
     <p><%= message %></p>
   <% end %>

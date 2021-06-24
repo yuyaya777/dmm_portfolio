@@ -3,6 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>ユーザー情報</h2>
     <%= render 'layouts/errors', obj: @member %>
+    
     <%= form_with model:@member, url: member_member_path(@member), method: :patch, local:true do |f| %>
       <div class="form-group">
         <%= f.label :ユーザー名 %>
