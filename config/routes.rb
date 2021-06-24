@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
+  # 検索機能
   get 'search/search'
+
   root to: 'homes#top'
+
+  # デバイス（管理者側）
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
 
+  # デバイス（ユーザー側）
   devise_for :members
 
   # 管理者側
   namespace :admin do
     resources :categories, only:[:index, :create, :edit, :update]
   end
-  
+
   # ユーザー側
   namespace :member do
     resources :members

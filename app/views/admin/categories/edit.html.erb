@@ -1,9 +1,9 @@
 <div class=container>
   <div class="row">
-    <div calss="col-md-3 offset-md-1">
+    <div calss="col-md-3 offset-md-1" style="padding:10px; margin:10px;">
       <h2>カテゴリー編集</h2><br>
       <%= form_with model: @category, url: admin_category_path(@category), method: :patch, local:true do |f| %>
-        <div>ジャンル名
+        <div>ジャンル名　
           <%= f.text_field :category_name  %>
           <%= f.submit "変更を保存する", class: "btn btn-info" %>
         </div>
