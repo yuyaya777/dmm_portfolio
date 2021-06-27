@@ -27,8 +27,9 @@
         <p>
           <%= @post.post_favorites.count %>人がこの質問に共感しています！
         </p>
-        <%= render 'member/posts/post_favorite', post: @post %>
-        <% if @post.member == current_member %>
+        <% if @post.member != current_member %>
+          <%= render 'member/posts/post_favorite', post: @post %>
+        <% elsif @post.member == current_member %>
           <%= link_to "編集する", edit_member_post_path(@post), class: "btn btn-success" %>
           <%= link_to "削除する", member_post_path(@post), method: :delete, class: "btn btn-danger" %>
         <% end %>
