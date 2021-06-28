@@ -11,22 +11,28 @@
         </td>
         <td style="width: 50%"><%= post_comment.comment %></td>
         <td style="width: 10%"><%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
-        <td style="width: 10%">
-          <% if post_comment.favorited_by?(current_member) %>
-            <!-- postの中にpost_commentとpost_comment_favoriteをネストしている為、path先が長くなりdeleteとpostアクションするのにidが2つ必要(@postとpost_comment)-->
-            <p>
-              <%= link_to member_post_post_comment_post_comment_favorites_path(post,post_comment), method: :delete, local:true do %>
-                <i class="fas fa-thumbs-up"></i><%= post_comment.post_comment_favorites.count %>いいね
-              <% end %>
-            </p>
-          <% else %>
-            <p>
-              <%= link_to member_post_post_comment_post_comment_favorites_path(post,post_comment), method: :post, local:true do %>
-                <i class="far fa-thumbs-up"></i><%= post_comment.post_comment_favorites.count %>いいね
-              <% end %>
-            </p>
-          <% end %>
-        </td>
+        <% if post_comment_member != current_member %>
+          <td style="width: 10%">
+            <% if post_comment.favorited_by?(current_member) %>
+              <!-- postの中にpost_commentとpost_comment_favoriteをネストしている為、path先が長くなりdeleteとpostアクションするのにidが2つ必要(@postとpost_comment)-->
+              <p>
+                <%= link_to member_post_post_comment_post_comment_favorites_path(post,post_comment), method: :delete, local:true do %>
+                  <i class="fas fa-thumbs-up"></i><%= post_comment.post_comment_favorites.count %>いいね
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to member_post_post_comment_post_comment_favorites_path(post,post_comment), method: :post, local:true do %>
+                  <i class="far fa-thumbs-up"></i><%= post_comment.post_comment_favorites.count %>いいね
+                <% end %>
+              </p>
+            <% end %>
+          </td>
+        <% else %>
+          <td style="width: 10%">
+            <p><%= post_comment.post_comment_favorites.count %>いいね</p>
+          </td>
+        <% end %>
         <% if current_member == post_comment_member %>
           <td style="width: 10%">
             <%= link_to "コメント削除", member_post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, class: "btn btn-danger" %>
