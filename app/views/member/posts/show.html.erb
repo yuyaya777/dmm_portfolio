@@ -27,8 +27,10 @@
         <p>
           <%= @post.post_favorites.count %>人がこの質問に共感しています！
         </p>
+        <!-- 投稿者は共感するボタンを非表示 -->
         <% if @post.member != current_member %>
           <%= render 'member/posts/post_favorite', post: @post %>
+        <!-- 投稿者のみ編集と削除ボタン表示 -->
         <% elsif @post.member == current_member %>
           <%= link_to "編集する", edit_member_post_path(@post), class: "btn btn-success" %>
           <%= link_to "削除する", member_post_path(@post), method: :delete, class: "btn btn-danger" %>
