@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # 管理者側
   namespace :admin do
-    resources :categories, only:[:index, :create, :edit, :update]
+    resources :categories, only:[:index, :create, :new, :edit, :update]
   end
 
   # ユーザー側
