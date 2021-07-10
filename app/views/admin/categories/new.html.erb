@@ -1,0 +1,16 @@
+<div class=container>
+  <div class="row">
+    <div calss="col-md-3 offset-md-1" style="padding:10px; margin:10px;">
+      <h2>カテゴリー新規登録</h2><br>
+      <%= render 'layouts/errors', obj: @category %>
+      <%= form_with model: @category, url: admin_categories_path, method: :post, local:true do |f| %>
+        <div style="padding:10px; margin:10px;">カテゴリー名
+          <%= f.text_field :category_name  %>
+        </div>
+        <div style="padding:10px; margin:10px;">
+          <%= f.submit "新規登録する", class: "btn btn-info" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
