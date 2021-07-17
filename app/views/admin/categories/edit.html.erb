@@ -4,7 +4,7 @@
       <h2>カテゴリー編集</h2><br>
       <%= render 'layouts/errors', obj: @category %>
       <%= form_with model: @category, url: admin_category_path(@category), method: :patch, local:true do |f| %>
-        <div style="padding:10px; margin:10px;">ジャンル名
+        <div style="padding:10px; margin:10px;">カテゴリー名
           <%= f.text_field :category_name  %>
         </div>
         <div style="padding:10px; margin:10px;">
