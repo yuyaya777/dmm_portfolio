@@ -7,6 +7,7 @@
     <%= form_with model: @post, url: member_posts_path, method: :post, local:true do |f| %>
       <div class="form-group">
         <%= f.label :質問カテゴリー（必須） %><br>
+        <!-- collection_selectでカテゴリーを選択できるようにする -->
         <%= f.collection_select :category_id, Category.all, :id, :category_name, prompt: "-- 選択して下さい --" %>
       </div>
      <div class="form-group">
