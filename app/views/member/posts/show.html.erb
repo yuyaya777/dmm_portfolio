@@ -39,6 +39,7 @@
     </div>
   </div>
 
+  <!-- 投稿物に対してのコメントがあった場合はベストアンサーを表示させる -->
   <% if @best_answer.present? %>
     <div class="border border-success" style="padding:10px; margin:10px">
       <h2>ベストアンサー  <%= image_tag "best_answer.jpeg", size: "50x50" %></h2>
