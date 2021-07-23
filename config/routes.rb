@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :member do
+    get 'inquiry/index'
+    get 'inquiry/conform'
+    get 'inquiry/thanks'
+  end
   # 検索機能
   get 'search/search'
 
