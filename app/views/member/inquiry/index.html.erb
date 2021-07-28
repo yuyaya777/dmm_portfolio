@@ -1,2 +1,20 @@
-<h1>Member::Inquiry#index</h1>
-<p>Find me in app/views/member/inquiry/index.html.erb</p>
+<%= form_with model: @inquiry, url: inquiry_conform_path, method: :post, local:true do |f| %>
+  <div class>
+    <h1>お問い合わせ</h1>
+  </div>
+
+  <div class>
+    <%= f.label :ユーザー名 %>
+    <%= f.text_field :name, class: "form-control introduction" %>
+  </div>
+  <div class>
+    <%= f.label :メールアドレス %>
+    <%= f.text_field :email, class: "form-control introduction" %>
+  </div>
+  <div class>
+    <%= f.label :お問い合わせ内容 %>
+    <%= f.text_area :message, class: "form-control introduction" %>
+  </div>
+  <div class>
+    <%= f.submit "確認画面へ", class: "btn btn-success" %>
+  </div>
