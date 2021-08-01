@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  
-  namespace :member do
-    get 'inquiry/index'
-    get 'inquiry/conform'
-    get 'inquiry/thanks'
-  end
-  
+
   # 検索機能
   get 'search/search'
 
@@ -33,6 +27,9 @@ Rails.application.routes.draw do
       end
       resource :post_favorites, only: [:create, :destroy]
     end
+    get 'inquiry/index'
+    get 'inquiry/conform'
+    get 'inquiry/thanks'
   end
 
   get '/search', to: 'search#search'
