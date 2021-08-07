@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       end
       resource :post_favorites, only: [:create, :destroy]
     end
+    # 問い合わせ機能
     get 'inquiry/index'
     get 'inquiry/conform'
     get 'inquiry/thanks'
