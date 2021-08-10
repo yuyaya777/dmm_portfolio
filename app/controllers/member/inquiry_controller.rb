@@ -1,4 +1,5 @@
 class Member::InquiryController < ApplicationController
+  
   # 入力画面
   def index
     @inquiry = Inquiry.new
