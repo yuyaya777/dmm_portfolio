@@ -10,8 +10,10 @@ class Member::InquiryController < ApplicationController
   def conform
     @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message))
     if @inquiry.valid?
+      # 確認画面を表示
       render :conform
     else
+      # NG発生、入力画面に戻る
       render :index
     end
   end
